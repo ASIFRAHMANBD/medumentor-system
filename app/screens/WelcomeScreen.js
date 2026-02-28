@@ -65,11 +65,12 @@ const EXAMS = [
   { year: "4th Professional", subjects: "Medicine, Surgery, OBG, Pediatrics", color: COLORS.primary },
 ];
 
-export default function WelcomeScreen({ navigation }) {
-  const [user, setUser] = React.useState(null);
+export default function WelcomeScreen({ navigation, user, onLoginSuccess, onLogout }) {
 
   const handleLoginSuccess = (data) => {
-    setUser(data.user);
+    if (onLoginSuccess) {
+      onLoginSuccess(data.user);
+    }
     navigation.replace('Dashboard', { user: data.user });
   };
 
@@ -121,7 +122,7 @@ export default function WelcomeScreen({ navigation }) {
                   <Text style={styles.welcomeTitle}>Welcome back,</Text>
                   <Text style={styles.welcomeName}>{user.name}</Text>
                 </View>
-                <TouchableOpacity onPress={() => setUser(null)} style={styles.logoutBtn}>
+                <TouchableOpacity onPress={onLogout} style={styles.logoutBtn}>
                   <LogOut size={20} color={COLORS.textSecondary} />
                 </TouchableOpacity>
               </View>

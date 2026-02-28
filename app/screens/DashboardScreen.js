@@ -15,8 +15,8 @@ import { COLORS } from '../constants';
 const { width, height } = Dimensions.get('window');
 const DRAWER_WIDTH = width * 0.75;
 
-export default function DashboardScreen({ navigation, route }) {
-  const user = route.params?.user || { name: 'Future Doctor' };
+export default function DashboardScreen({ navigation, route, user, onLogout }) {
+  const userData = user || route.params?.user || { name: 'Future Doctor' };
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const drawerAnim = useRef(new Animated.Value(-DRAWER_WIDTH)).current;
 
@@ -34,6 +34,9 @@ export default function DashboardScreen({ navigation, route }) {
   };
 
   const handleLogout = () => {
+    if (onLogout) {
+      onLogout();
+    }
     navigation.reset({
       index: 0,
       routes: [{ name: 'Welcome' }],
@@ -72,11 +75,11 @@ export default function DashboardScreen({ navigation, route }) {
             <View style={styles.drawerHeader}>
               <View style={styles.drawerAvatar}>
                 <Text style={styles.drawerAvatarText}>
-                  {user.name?.charAt(0).toUpperCase() || 'U'}
+                  {userData.name?.charAt(0).toUpperCase() || 'U'}
                 </Text>
               </View>
-              <Text style={styles.drawerName}>{user.name}</Text>
-              <Text style={styles.drawerEmail}>{user.email || 'student@medumentor.com'}</Text>
+              <Text style={styles.drawerName}>{userData.name}</Text>
+              <Text style={styles.drawerEmail}>{userData.email || 'student@medumentor.com'}</Text>
             </View>
 
             <View style={styles.drawerItems}>
@@ -104,13 +107,13 @@ export default function DashboardScreen({ navigation, route }) {
             <Menu size={24} color={COLORS.white} />
           </TouchableOpacity>
           <View>
-            <Text style={styles.headerGreeting}>Hello, {user.name?.split(' ')[0]}</Text>
+            <Text style={styles.headerGreeting}>Hello, {userData.name?.split(' ')[0]}</Text>
             <Text style={styles.headerSubtitle}>Ready to learn?</Text>
           </View>
           <TouchableOpacity style={styles.profileButton}>
             <View style={styles.headerAvatar}>
                <Text style={styles.headerAvatarText}>
-                {user.name?.charAt(0).toUpperCase() || 'U'}
+                {userData.name?.charAt(0).toUpperCase() || 'U'}
               </Text>
             </View>
           </TouchableOpacity>
@@ -157,7 +160,10 @@ export default function DashboardScreen({ navigation, route }) {
               <Text style={styles.gridSubtitle}>500+ Videos</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.gridCard}>
+            <TouchableOpacity 
+              style={styles.gridCard}
+              onPress={() => navigation.navigate('QuizList')}
+            >
               <View style={[styles.gridIcon, { backgroundColor: '#F0F9FF' }]}>
                 <ClipboardList size={24} color="#0EA5E9" />
               </View>
