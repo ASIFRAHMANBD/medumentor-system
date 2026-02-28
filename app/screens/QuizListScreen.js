@@ -262,25 +262,43 @@ export default function QuizListScreen({ navigation, route }) {
 
   const renderLessonWithQuiz = (lessonItem) => {
     const quizCount = lessonItem.quizBank?.length || 0;
-    if (!quizCount) return null;
+    const writtenExamCount = lessonItem.writtenExamBank?.length || 0;
+    if (!quizCount && !writtenExamCount) return null;
 
     return (
       <View key={lessonItem.id} style={styles.lessonContainer}>
         <Text style={styles.lessonTitle}>{lessonItem.title}</Text>
         <View style={styles.lessonContent}>
-          <TouchableOpacity 
-            style={styles.quizEntryButton}
-            onPress={() => navigation.navigate('QuizList', { lessonId: lessonItem.id })}
-            activeOpacity={0.8}
-          >
-            <View style={styles.quizEntryInfo}>
-              <Text style={styles.quizEntryTitle}>QA Bank</Text>
-              <Text style={styles.quizEntrySubtitle}>
-                {quizCount} quiz{quizCount !== 1 ? 'zes' : ''} available
-              </Text>
-            </View>
-            <ChevronRight size={20} color={COLORS.primary} />
-          </TouchableOpacity>
+          {quizCount > 0 && (
+            <TouchableOpacity
+              style={styles.quizEntryButton}
+              onPress={() => navigation.navigate('QuizList', { lessonId: lessonItem.id })}
+              activeOpacity={0.8}
+            >
+              <View style={styles.quizEntryInfo}>
+                <Text style={styles.quizEntryTitle}>QA Bank</Text>
+                <Text style={styles.quizEntrySubtitle}>
+                  {quizCount} quiz{quizCount !== 1 ? 'zes' : ''} available
+                </Text>
+              </View>
+              <ChevronRight size={20} color={COLORS.primary} />
+            </TouchableOpacity>
+          )}
+          {writtenExamCount > 0 && (
+            <TouchableOpacity
+              style={[styles.quizEntryButton, { borderColor: '#F3E8FF' }]}
+              onPress={() => navigation.navigate('WrittenExamList', { lessonId: lessonItem.id })}
+              activeOpacity={0.8}
+            >
+              <View style={styles.quizEntryInfo}>
+                <Text style={[styles.quizEntryTitle, { color: '#7C3AED' }]}>Written Exam</Text>
+                <Text style={styles.quizEntrySubtitle}>
+                  {writtenExamCount} exam{writtenExamCount !== 1 ? 's' : ''} available
+                </Text>
+              </View>
+              <ChevronRight size={20} color="#7C3AED" />
+            </TouchableOpacity>
+          )}
         </View>
       </View>
     );
@@ -289,8 +307,8 @@ export default function QuizListScreen({ navigation, route }) {
   const renderModuleCardBrowser = ({ item }) => {
     const isExpanded = expandedModuleId === item.id;
 
-    const hasQuizzes = (item.topics?.some(t => t.lessons?.some(l => l.quizBank && l.quizBank.length > 0))) ||
-                     (item.lessons?.some(l => l.quizBank && l.quizBank.length > 0));
+    const hasQuizzes = (item.topics?.some(t => t.lessons?.some(l => (l.quizBank && l.quizBank.length > 0) || (l.writtenExamBank && l.writtenExamBank.length > 0)))) ||
+                     (item.lessons?.some(l => (l.quizBank && l.quizBank.length > 0) || (l.writtenExamBank && l.writtenExamBank.length > 0)));
 
     return (
       <View style={styles.moduleCardContainer}>
@@ -314,7 +332,7 @@ export default function QuizListScreen({ navigation, route }) {
         {isExpanded && (
           <View style={styles.moduleBody}>
             {item.topics?.map(topic => {
-              const topicHasQuizzes = topic.lessons?.some(l => l.quizBank && l.quizBank.length > 0);
+              const topicHasQuizzes = topic.lessons?.some(l => (l.quizBank && l.quizBank.length > 0) || (l.writtenExamBank && l.writtenExamBank.length > 0));
               if (!topicHasQuizzes) return null;
 
               return (

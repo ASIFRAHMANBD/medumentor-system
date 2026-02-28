@@ -4,10 +4,10 @@ import {
   Dimensions, Animated, Modal, StatusBar, Platform
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { 
-  Menu, X, Video, FileText, ClipboardList, CreditCard, 
-  User, Settings, Star, HelpCircle, LogOut, Zap, 
-  ChevronRight, PlayCircle, BookOpen, Crown, Activity
+import {
+  Menu, X, Video, FileText, ClipboardList, CreditCard,
+  User, Settings, Star, HelpCircle, LogOut, Zap,
+  ChevronRight, PlayCircle, BookOpen, Crown, Activity, PenLine
 } from 'lucide-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS } from '../constants';
@@ -182,12 +182,15 @@ export default function DashboardScreen({ navigation, route, user, onLogout }) {
               <Text style={styles.gridSubtitle}>High Yield</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.gridCard}>
-              <View style={[styles.gridIcon, { backgroundColor: '#FEFCE8' }]}>
-                <Crown size={24} color="#CA8A04" />
+            <TouchableOpacity
+              style={styles.gridCard}
+              onPress={() => navigation.navigate('WrittenExamList')}
+            >
+              <View style={[styles.gridIcon, { backgroundColor: '#F3E8FF' }]}>
+                <PenLine size={24} color="#7C3AED" />
               </View>
-              <Text style={styles.gridTitle}>Premium</Text>
-              <Text style={styles.gridSubtitle}>Subscription</Text>
+              <Text style={styles.gridTitle}>Written Exam</Text>
+              <Text style={styles.gridSubtitle}>Fill in Blanks</Text>
             </TouchableOpacity>
           </View>
 

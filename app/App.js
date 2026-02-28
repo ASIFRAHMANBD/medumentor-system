@@ -9,6 +9,9 @@ import NotesScreen from './screens/NotesScreen';
 import QuizListScreen from './screens/QuizListScreen';
 import QuizPlayScreen from './screens/QuizPlayScreen';
 import QuizResultScreen from './screens/QuizResultScreen';
+import WrittenExamListScreen from './screens/WrittenExamListScreen';
+import WrittenExamPlayScreen from './screens/WrittenExamPlayScreen';
+import WrittenExamResultScreen from './screens/WrittenExamResultScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -75,6 +78,9 @@ export default function App() {
         <Stack.Screen name="QuizList" component={QuizListScreen} />
         <Stack.Screen name="QuizPlay" component={QuizPlayScreen} />
         <Stack.Screen name="QuizResult" component={QuizResultScreen} />
+        <Stack.Screen name="WrittenExamList" component={WrittenExamListScreen} />
+        <Stack.Screen name="WrittenExamPlay" component={WrittenExamPlayScreen} />
+        <Stack.Screen name="WrittenExamResult" component={WrittenExamResultScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

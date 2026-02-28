@@ -55,7 +55,7 @@ export const DEMO_DATA = [
                             explanation: "There are 12 pairs of cranial nerves that emerge directly from the brain."
                           },
                           {
-                            id: "q_cn_02", 
+                            id: "q_cn_02",
                             question: "Which cranial nerve is responsible for smell?",
                             options: ["Optic nerve (II)", "Oculomotor nerve (III)", "Olfactory nerve (I)", "Trigeminal nerve (V)"],
                             correctAnswer: 2,
@@ -67,6 +67,30 @@ export const DEMO_DATA = [
                             options: ["Facial nerve (VII)", "Vagus nerve (X)", "Oculomotor nerve (III)", "Hypoglossal nerve (XII)"],
                             correctAnswer: 2,
                             explanation: "The oculomotor nerve (III) controls most eye movements."
+                          }
+                        ]
+                      }
+                    ],
+                    writtenExamBank: [
+                      {
+                        id: "wexam_cn_01",
+                        title: "Cranial Nerves Written Exam",
+                        description: "Fill in the blanks about cranial nerves",
+                        questions: [
+                          {
+                            id: "wq_cn_01",
+                            sentence: "There are _____ pairs of cranial nerves in humans.",
+                            correctAnswer: "12"
+                          },
+                          {
+                            id: "wq_cn_02",
+                            sentence: "The _____ nerve (CN I) is responsible for the sense of smell.",
+                            correctAnswer: "olfactory"
+                          },
+                          {
+                            id: "wq_cn_03",
+                            sentence: "The _____ nerve (CN III) controls most eye movements.",
+                            correctAnswer: "oculomotor"
                           }
                         ]
                       }
@@ -108,6 +132,25 @@ export const DEMO_DATA = [
                             options: ["III and IV", "V and VI", "VII and VIII", "IX and X"],
                             correctAnswer: 0,
                             explanation: "The oculomotor (III) and trochlear (IV) nuclei are in the midbrain."
+                          }
+                        ]
+                      }
+                    ],
+                    writtenExamBank: [
+                      {
+                        id: "wexam_bs_01",
+                        title: "Brainstem Written Exam",
+                        description: "Fill in the blanks about brainstem anatomy",
+                        questions: [
+                          {
+                            id: "wq_bs_01",
+                            sentence: "The _____ are longitudinal ridges on the anterior surface of the medulla oblongata.",
+                            correctAnswer: "pyramids"
+                          },
+                          {
+                            id: "wq_bs_02",
+                            sentence: "The oculomotor (III) and trochlear (IV) cranial nerve nuclei are located in the _____.",
+                            correctAnswer: "midbrain"
                           }
                         ]
                       }
@@ -199,6 +242,25 @@ export const DEMO_DATA = [
                           }
                         ]
                       }
+                    ],
+                    writtenExamBank: [
+                      {
+                        id: "wexam_th_01",
+                        title: "Heart Chambers Written Exam",
+                        description: "Fill in the blanks about cardiac chambers",
+                        questions: [
+                          {
+                            id: "wq_th_01",
+                            sentence: "The _____ ventricle has the thickest myocardium because it pumps blood into the systemic circulation.",
+                            correctAnswer: "left"
+                          },
+                          {
+                            id: "wq_th_02",
+                            sentence: "The crista terminalis is a muscular ridge found in the right _____.",
+                            correctAnswer: "atrium"
+                          }
+                        ]
+                      }
                     ]
                   }
                 ]
@@ -256,6 +318,30 @@ export const DEMO_DATA = [
                             options: ["Ventricular depolarization", "Atrial depolarization", "Ventricular repolarization", "Atrial repolarization"],
                             correctAnswer: 1,
                             explanation: "The P wave represents atrial depolarization (contraction)."
+                          }
+                        ]
+                      }
+                    ],
+                    writtenExamBank: [
+                      {
+                        id: "wexam_cv_01",
+                        title: "Cardiac Physiology Written Exam",
+                        description: "Fill in the blanks about cardiac function",
+                        questions: [
+                          {
+                            id: "wq_cv_01",
+                            sentence: "At 75 bpm, the cardiac cycle lasts _____ seconds.",
+                            correctAnswer: "0.8"
+                          },
+                          {
+                            id: "wq_cv_02",
+                            sentence: "The P wave on an ECG represents _____ depolarization.",
+                            correctAnswer: "atrial"
+                          },
+                          {
+                            id: "wq_cv_03",
+                            sentence: "The QRS complex on an ECG represents _____ depolarization.",
+                            correctAnswer: "ventricular"
                           }
                         ]
                       }
@@ -418,6 +504,25 @@ export const DEMO_DATA = [
                         options: ["Sharp weapons", "Blunt weapons", "Thermal burns", "Chemical injuries"],
                         correctAnswer: 1,
                         explanation: "Blunt objects can leave a pattern corresponding to the impacting surface."
+                      }
+                    ]
+                  }
+                ],
+                writtenExamBank: [
+                  {
+                    id: "wexam_fm_bf_01",
+                    title: "Blunt Injuries Written Exam",
+                    description: "Fill in the blanks about blunt force injuries",
+                    questions: [
+                      {
+                        id: "wq_fm_bf_01",
+                        sentence: "A bruise is also known as a _____.",
+                        correctAnswer: "contusion"
+                      },
+                      {
+                        id: "wq_fm_bf_02",
+                        sentence: "_____ injuries leave a pattern on the skin corresponding to the shape of the impacting surface.",
+                        correctAnswer: "patterned"
                       }
                     ]
                   }
@@ -658,6 +763,25 @@ export const DEMO_DATA = [
                         options: ["Only beta blockers", "Immediate thrombolysis or PCI", "Long-term statin therapy alone", "Antibiotics"],
                         correctAnswer: 1,
                         explanation: "Reperfusion therapy with thrombolysis or PCI is crucial in early STEMI management."
+                      }
+                    ]
+                  }
+                ],
+                writtenExamBank: [
+                  {
+                    id: "wexam_med_mi_01",
+                    title: "Myocardial Infarction Written Exam",
+                    description: "Fill in the blanks about MI",
+                    questions: [
+                      {
+                        id: "wq_med_mi_01",
+                        sentence: "The most common cause of acute MI is atherosclerotic plaque rupture with _____.",
+                        correctAnswer: "thrombosis"
+                      },
+                      {
+                        id: "wq_med_mi_02",
+                        sentence: "Early management of STEMI includes reperfusion therapy such as thrombolysis or _____.",
+                        correctAnswer: "PCI"
                       }
                     ]
                   }
